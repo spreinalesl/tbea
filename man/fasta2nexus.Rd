@@ -2,7 +2,7 @@
 % Please edit documentation in R/fasta2nexus.R
 \name{fasta2nexus}
 \alias{fasta2nexus}
-\title{fasta2nexus: Function for converting from molecular alignments from fasta to nexus format}
+\title{fasta2nexus: Function for converting molecular alignments from fasta to nexus format}
 \usage{
 fasta2nexus(path, outpath = NULL, pattern, wholeAlign = TRUE)
 }
@@ -19,7 +19,7 @@ fasta2nexus(path, outpath = NULL, pattern, wholeAlign = TRUE)
 This function writes to the disk several files, at least one nexus originally from a fasta file, and potentially a concatenated file if several fasta are provided.
 }
 \description{
-fasta2nexus: Function for converting from molecular alignments from fasta to nexus format
+fasta2nexus: Function for converting molecular alignments from fasta to nexus format
 }
 \details{
 This function will convert from fasta to nexus, and optionally concatenate a single nexus with the content of all fasta files.
