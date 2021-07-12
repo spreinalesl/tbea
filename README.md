@@ -29,6 +29,11 @@ devtools::install_github("gaballench/tbea")
 Once the package makes its way into CRAN the standard `install.packages`
 may be used for installing stable versions.
 
+## Authorship
+
+This package was created and maintained by Gustavo A. Ballen
+(@gaballench) and Sandra Reinales (@spreinalesl).
+
 ## Problems?
 
 If you find a bug or unexpected behavior, please [file an
