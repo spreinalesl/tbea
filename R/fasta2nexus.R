@@ -1,4 +1,4 @@
-#' fasta2nexus: Function for converting from molecular alignments from fasta to nexus format
+#' fasta2nexus: Function for converting molecular alignments from fasta to nexus format
 #' 
 #' @param path A vector of type 'character' with the path to the fasta alignments.
 #'
@@ -24,7 +24,7 @@
 #' @export
 
 fasta2nexus <- function(path, outpath = NULL, pattern, wholeAlign = TRUE) {    
-    fastaFiles <- dir(path = "secuencias", pattern = "aligned.fasta$")
+    fastaFiles <- dir(path = path, pattern = pattern)
     if (!is.null(outpath)){
         dir.create(outpath)
     } else {
