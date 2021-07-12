@@ -32,7 +32,8 @@ may be used for installing stable versions.
 ## Authorship
 
 This package was created and maintained by Gustavo A. Ballen
-(@gaballench) and Sandra Reinales (@spreinalesl).
+(\[@gaballench\](<https://github.com/gaballench/>)) and Sandra Reinales
+(\[@spreinalesl\](<https://github.com/spreinalesl/>)).
 
 ## Problems?
 
