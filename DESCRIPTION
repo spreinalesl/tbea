@@ -1,0 +1,24 @@
+Package: tbea
+Title: Tools for Pre- and Post-processing in Bayesian Evolutionary Analyses
+Version: 0.0.0.9000
+Authors@R: person("Gustavo A.", "Ballen", email = "gaballench@gmail.com", role = c("aut", "cre"))
+    person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut", "cre"))
+Description: Package for bayesian inference in phylogenetics and evolution.
+    It provides functions for prior specification in divergence time
+    estimation using fossils as well as other kinds of data. The package
+    provides tools for interacticng with the input and output of bayesian
+    platforms in evolutionary biology such as BEAST2. The package implements
+    a way to measure interdependence between probability density functions
+    in the context of comparisons between prior and posterior bayesian
+    densities. It also provides functions for concatenating molecular and
+    morphological data for standard tree estimation (e.g., MrBayes) or total
+    evidence FBD divergence time estimation (e.g., Beast or RevBayes).
+Depends: R (>= 3.1.0)
+License: GNU General Public License v3.0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+BugReports: https://github.com/gaballench/tbea/issues
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
