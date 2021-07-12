@@ -1,8 +1,8 @@
 Package: tbea
 Title: Tools for Pre- and Post-processing in Bayesian Evolutionary Analyses
 Version: 0.0.0.9000
-Authors@R: person("Gustavo A.", "Ballen", email = "gaballench@gmail.com", role = c("aut", "cre"))
-    person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut", "cre"))
+Authors@R: c(person("Gustavo A.", "Ballen", email = "gaballench@gmail.com", role = c("aut", "cre")), 
+    person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut", "cre")))
 Description: Package for bayesian inference in phylogenetics and evolution.
     It provides functions for prior specification in divergence time
     estimation using fossils as well as other kinds of data. The package
