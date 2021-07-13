@@ -31,9 +31,8 @@ may be used for installing stable versions.
 
 ## Authorship
 
-This package was created and maintained by Gustavo A. Ballen (
-\[@gaballench\](<https://github.com/gaballench/>) ) and Sandra Reinales
-( io\[@spreinalesl\](<https://github.com/spreinalesl/>) ).
+This package was created and maintained by Gustavo A. Ballen
+(@gaballench) and Sandra Reinales (@spreinalesl).
 
 ## Problems?
 
