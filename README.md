@@ -13,8 +13,9 @@ output of phylogenetic bayesian programs (such as
 input files and decision making. It also supports sensitivity
 calculations using intersection (Ballen, in prep.) for comparing two
 given densities (e.g. prior vs. posterior). Functionality has been added
-for concatenating morphological and molecular matrices for FBD analyses
-or standard topology estimation.
+for interacting with output from parsimony analyses in TNT, and
+concatenating morphological and molecular matrices for FBD analyses or
+standard topology estimation.
 
 ## Installation
 
