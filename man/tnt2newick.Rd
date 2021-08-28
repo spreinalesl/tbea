@@ -7,11 +7,11 @@
 tnt2newick(file, output, subsetting = TRUE)
 }
 \arguments{
-\item{path}{A vector of type 'character' with the path to the original TNT tree file.}
+\item{file}{A vector of type 'character' with the path to the original TNT tree file.}
 
-\item{outpath}{A vector of type 'character' with the path to output files to contain the tree in newick format.}
+\item{output}{A vector of type 'character' with the path to output files to contain the tree in newick format.}
 
-\item{pattern}{A vector of type 'logical' indicating whether subsetting (i.e., chopping at once the first and last line of the TNT tree file) should be done. Otherwise, explicit text replacements removing such lines are used.}
+\item{subsetting}{A vector of type 'logical' indicating whether subsetting (i.e., chopping at once the first and last line of the TNT tree file) should be done. Otherwise, explicit text replacements removing such lines are used.}
 }
 \value{
 This function writes to the disk a text file containing the tree converted to newick format.
@@ -25,7 +25,7 @@ This function has been tested for cases where only one tree is in the original t
 \examples{
 # Convert a tree in TNT tree format to newick format
 \dontrun{
-fasta2nexus(file = "my_TNT_tree.tre", output = "my_TNT_tree.newick")
+tnt2newick(file = "my_TNT_tree.tre", output = "my_TNT_tree.newick")
 }
 }
 \author{

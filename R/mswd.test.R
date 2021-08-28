@@ -29,6 +29,7 @@
 #' # The p-value is larger than the nominal alpha of 0.05, so we can
 #' # not reject the null hypothesis of isochron conditions
 #' @export
+#' @importFrom stats pchisq
 
 mswd.test <- function(age, sd) {
     # calculate the weighted mean

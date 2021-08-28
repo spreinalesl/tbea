@@ -32,7 +32,9 @@
 #'             filename = paste(path, "concatenatedMolmorph.nexus", sep = "/"),
 #'             path = path, 
 #'             morpho = TRUE,
-#'             morphoFilename = paste(path, grep(pattern = "morfologia", x = dir(path, pattern), value = TRUE), sep = "/"),
+#'             morphoFilename = paste(path, grep(pattern = "morfologia",
+#'                                               x = dir(path, pattern), value = TRUE),
+#'                                    sep = "/"),
 #'             sumFilename = "partitions.txt")
 #' }
 #' # Concatenate arbitrary matrices in the working directory,
@@ -45,6 +47,8 @@
 #'             sumFilename = "partitions.txt")
 #' }
 #' @export
+#' @importFrom utils write.table
+
 
 concatNexus <- function(matrices = NULL, pattern, path, filename, morpho = FALSE, morphoFilename = NULL, sumFilename) {
     NCHARregex <- "NCHAR[[:blank:]]*=[[:blank:]]*[[:digit:]]+"

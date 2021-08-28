@@ -39,6 +39,7 @@
 #'            pdfunction = "plnorm",
 #'            params = c("meanlog", "sdlog"))
 #' @export
+#' @importFrom stats optim
 
 findParams <- function(q, p, output = "complete", pdfunction, params, initVals = NULL) {
     #  calculate init values if the user did not provide any 

@@ -8,7 +8,7 @@
 #' 
 #' @param offset Hard lower bound.
 #' 
-#' @param from,to Starting and ending point to calculate considering the offset as zero. That is, from will affect produce a starting point of (offset + from) and an ending point of (offset + to).
+#' @param from,to,by Starting and ending point to calculate considering the offset as zero. That is, from will affect produce a starting point of (offset + from) and an ending point of (offset + to). By sets the step size of the sequence from `from` to `to` each `by` steps.
 #'
 #' @return A matrix of two columns consisting of the x and y values of the lognormal density.
 #'
@@ -23,8 +23,9 @@
 #' # to values will start in (offset + from) and finish in (offset + to)
 #' lognormalBeast(M = 1, S = 1, meanInRealSpace = TRUE, offset = 10, from = 0, to = 10)
 #' @export
+#' @importFrom stats dlnorm
 
-lognormalBeast <- function(M, S, meanInRealSpace = TRUE, offset = 0, from, to, by = 0.05, ...) {
+lognormalBeast <- function(M, S, meanInRealSpace = TRUE, offset = 0, from, to, by = 0.05) {
     if (meanInRealSpace == TRUE) {
         M <- log(M)
     }

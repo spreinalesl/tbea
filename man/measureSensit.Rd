@@ -24,6 +24,8 @@ measureSensit(
 
 \item{plot}{Should a plot be produced?}
 
+\item{x_limit}{Whether to define the xlim form the min-max of the combined density x-values}
+
 \item{colors}{A vector of three colors, namely, color of the \code{d1} density (e.g., the prior), color of the \code{d2} density e.g., the posterior), and color of the intersection.}
 
 \item{...}{Further arguments to pass to the graphical functions such as \code{lines} and \code{plot} internally (e.g., \code{main}, \code{xlim}, \code{ylim}, \code{xlab}, \code{ylab}, etc.).}

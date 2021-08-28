@@ -4,16 +4,7 @@
 \alias{lognormalBeast}
 \title{Constructing a curve for the user-specified lognormal prior using Beast2 parameters}
 \usage{
-lognormalBeast(
-  M,
-  S,
-  meanInRealSpace = TRUE,
-  offset = 0,
-  from,
-  to,
-  by = 0.05,
-  ...
-)
+lognormalBeast(M, S, meanInRealSpace = TRUE, offset = 0, from, to, by = 0.05)
 }
 \arguments{
 \item{M}{Mean of the lognormal density in Beast2.}
@@ -24,7 +15,7 @@ lognormalBeast(
 
 \item{offset}{Hard lower bound.}
 
-\item{from, to}{Starting and ending point to calculate considering the offset as zero. That is, from will affect produce a starting point of (offset + from) and an ending point of (offset + to).}
+\item{from, to, by}{Starting and ending point to calculate considering the offset as zero. That is, from will affect produce a starting point of (offset + from) and an ending point of (offset + to). By sets the step size of the sequence from `from` to `to` each `by` steps.}
 }
 \value{
 A matrix of two columns consisting of the x and y values of the lognormal density.

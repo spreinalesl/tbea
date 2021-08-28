@@ -50,7 +50,9 @@ concatNexus(matrices = NULL, pattern = pattern,
             filename = paste(path, "concatenatedMolmorph.nexus", sep = "/"),
             path = path, 
             morpho = TRUE,
-            morphoFilename = paste(path, grep(pattern = "morfologia", x = dir(path, pattern), value = TRUE), sep = "/"),
+            morphoFilename = paste(path, grep(pattern = "morfologia",
+                                              x = dir(path, pattern), value = TRUE),
+                                   sep = "/"),
             sumFilename = "partitions.txt")
 }
 # Concatenate arbitrary matrices in the working directory,

@@ -1,2 +1,5 @@
 ^doc$
 ^Meta$
+^README.Rmd
+^README.html
+^tbea.pdf

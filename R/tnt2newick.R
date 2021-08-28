@@ -1,10 +1,10 @@
 #' tnt2newick: Function for converting from TNT tree format to newick parenthetical format
 #' 
-#' @param path A vector of type 'character' with the path to the original TNT tree file.
+#' @param file A vector of type 'character' with the path to the original TNT tree file.
 #'
-#' @param outpath A vector of type 'character' with the path to output files to contain the tree in newick format.
+#' @param output A vector of type 'character' with the path to output files to contain the tree in newick format.
 #'
-#' @param pattern A vector of type 'logical' indicating whether subsetting (i.e., chopping at once the first and last line of the TNT tree file) should be done. Otherwise, explicit text replacements removing such lines are used.
+#' @param subsetting A vector of type 'logical' indicating whether subsetting (i.e., chopping at once the first and last line of the TNT tree file) should be done. Otherwise, explicit text replacements removing such lines are used.
 #' 
 #' @return This function writes to the disk a text file containing the tree converted to newick format.
 #'
@@ -15,7 +15,7 @@
 #' @examples
 #' # Convert a tree in TNT tree format to newick format
 #' \dontrun{
-#' fasta2nexus(file = "my_TNT_tree.tre", output = "my_TNT_tree.newick")
+#' tnt2newick(file = "my_TNT_tree.tre", output = "my_TNT_tree.newick")
 #' }
 #' @export
 

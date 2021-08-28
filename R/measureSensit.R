@@ -10,6 +10,8 @@
 #'
 #' @param colors A vector of three colors, namely, color of the \code{d1} density (e.g., the prior), color of the \code{d2} density e.g., the posterior), and color of the intersection.
 #'
+#' @param x_limit Whether to define the xlim form the min-max of the combined density x-values
+#'
 #' @param ... Further arguments to pass to the graphical functions such as \code{lines} and \code{plot} internally (e.g., \code{main}, \code{xlim}, \code{ylim}, \code{xlab}, \code{ylab}, etc.).
 #'
 #' @return A numeric vector with the value of the intersection between two densities. As a side effect, a plot is produced to an active (or new) graphical device.
@@ -44,6 +46,9 @@
 #'               plot = FALSE)
 #' }
 #' @export
+#' @importFrom graphics lines polygon
+#' @importFrom stats approxfun density
+
 
 measureSensit <- function(d1, d2, splits = 500, rawData = c(TRUE, TRUE), plot = TRUE, x_limit = "auto", colors = c("red", "blue", "gray"), ...) {
     # carry out density calculation for raw data argument d1
