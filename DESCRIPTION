@@ -21,6 +21,9 @@ LazyData: true
 RoxygenNote: 7.1.1
 URL: https://github.com/gaballench/tbea
 BugReports: https://github.com/gaballench/tbea/issues
-Suggests: knitr,
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
     rmarkdown
 VignetteBuilder: knitr
+Config/testthat/edition: 3
