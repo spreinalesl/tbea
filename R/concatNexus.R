@@ -121,7 +121,7 @@ concatNexus <- function(matrices = NULL, pattern, path, filename, morpho = FALSE
     if (morpho) {
         NCHARdna <- sum(NCHARvector[-length(NCHARvector)])
         NCHARmorph <- sum(NCHARvector)
-        NCHAR <- paste("NCHAR=", NCHARmorph, ";", sep = "")
+        NCHAR <- paste("NCHAR=", NCHARmorph, "", sep = "")
         DATATYPE <- paste("DATATYPE=MIXED(DNA:1-",
                           NCHARdna,
                           ",STANDARD:",
