@@ -45,7 +45,7 @@ tbea::findParams(q = c(1, 5.5, 10),
           params = c("meanlog", "sdlog"))
 ```
 
-Now we have a published study that specified a lognormal prior (with or without justification, that's another question) and we want to actually plot it outside of `beauti`, for instance, in order to assess sensitivity of the posterior to the prior. How can we plot it in R and use its data as any other statistical density?
+Now we have a published study that specified a lognormal prior (with or without justification, that's another question) and we want to actually plot it outside of `beauti`, for instance, in order to assess similarity between the posterior and the prior. How can we plot it in R and use its data as any other statistical density?
 
 ## The `lognormalBeast` function
 
@@ -56,24 +56,24 @@ lnvals <- tbea::lognormalBeast(M = 1, S = 1, meanInRealSpace = TRUE, from = 0, t
 plot(lnvals, type = "l", lwd = 3)
 ```
 
-# Sensitivity
+# Density similarity
 
-One hot topic in model and tool comparisons is the sensitivity of the posterior to the prior, that is, how much could our results be determined by the prior. For instance, if the posterior is totally dependent on the prior, that means that the likelihood (or the data) is not providing information, and this is very risky as there would be the potential to manipulate the results of bayesian analyses.
+One hot topic in model and tool comparisons is the similarity of the posterior to the prior, that is, how much could our results resemble de distribution set in the prior. For instance, if the posterior is identical to the prior, that means that the likelihood (or the data) is not providing information, and this is very risky as there would be the potential to manipulate the results of bayesian analyses.
 
-## The `measureSensit` function
+## The `measureSimil` function
 
-Measure and plot the sensitivity between two distributions partially overlapping:
+Measure and plot the similarity between two distributions partially overlapping:
 
 ```{r}
 set.seed(1985)
 colors <- c("red", "blue", "lightgray")
-below <- tbea::measureSensit(d1 = rnorm(1000000, mean = 3, 1),
+below <- tbea::measureSimil(d1 = rnorm(1000000, mean = 3, 1),
                        d2 = rnorm(1000000, mean = 0, 1),
-                       main = "Partial dependence",
+                       main = "Partial similarity",
                        colors = colors)
 legend(x = "topright", legend = round(below, digits = 2))
 ```
-The number in the legend indicates an overlap of 0.13, and as such, a measure of interdependence between the densities (Ballen in prep.).
+The number in the legend indicates an overlap of 0.13, and as such, a measure of similarity between the densities.
 
 # Geochronology
 

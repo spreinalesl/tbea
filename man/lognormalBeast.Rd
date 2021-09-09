@@ -24,7 +24,7 @@ A matrix of two columns consisting of the x and y values of the lognormal densit
 Constructing a curve for the user-specified lognormal prior using Beast2 parameters
 }
 \details{
-This function creates a matrix of x,y values given parameters of a lognormal density as specified in the program Beast2. It's main purpose is for plotting but other uses such as sensitivity quantification are available. Please note that the value of mean depends on whether we expect it to be in real or log space. Please refer to Heath (2015) for more info: \href{http://phyloworks.org/workshops/DivTime_BEAST2_tutorial_FBD.pdf}{Heath, T. A. (2015). Divergence Time Estimation using BEAST v2}.
+This function creates a matrix of x,y values given parameters of a lognormal density as specified in the program Beast2. It's main purpose is for plotting but other uses such as similarity quantification are available. Please note that the value of mean depends on whether we expect it to be in real or log space. Please refer to Heath (2015) for more info: \href{http://phyloworks.org/workshops/DivTime_BEAST2_tutorial_FBD.pdf}{Heath, T. A. (2015). Divergence Time Estimation using BEAST v2}.
 }
 \examples{
 

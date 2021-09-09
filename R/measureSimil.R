@@ -16,32 +16,32 @@
 #'
 #' @return A numeric vector with the value of the intersection between two densities. As a side effect, a plot is produced to an active (or new) graphical device.
 #'
-#' @details Sensitivity is measured as the overlapping portion between two densities following Ballen (in prep). It has a value between 0 and 1. The values of the vector rawData determine the behavior of the function and therefore attention must be paid to their consistence with the nature of arguments d1 and d2. Despite the function was designed in order to allow to quantify posterior sensitivity to the prior, this can be used to quantify any overlap between two given densities and for any other purpose.
+#' @details Similarity is measured as the overlapping portion between two densities. It has a value between 0 and 1. The values of the vector rawData determine the behavior of the function and therefore attention must be paid to their consistence with the nature of arguments d1 and d2. Despite the function was designed in order to allow to quantify similarity between the posterior and the prior, this can be used to quantify any overlap between two given densities and for any other purpose.
 #' @examples
 #' \dontrun{
 #' # Set seed and colors to use in plots in the order: Prior, posterior, and intersection
 #' set.seed(1985)
 #' colors <- c("red", "blue", "lightgray")
-#' # Sensitivity in two identical distributions
-#' below <- measureSensit(d1 = rnorm(1000000, mean = 0, 1),
+#' # Similarity between two identical distributions
+#' below <- measureSimil(d1 = rnorm(1000000, mean = 0, 1),
 #'                        d2 = rnorm(1000000, mean = 0, 1),
-#'                        main = "Comp. dependence",
+#'                        main = "Comp. similarity",
 #'                        colors = colors)
 #' legend(x = "topright", legend = round(below, digits = 2))
-#' # Sensitivity in two distributions partially overlapping
-#' below <- measureSensit(d1 = rnorm(1000000, mean = 3, 1),
+#' # Similarity in two distributions partially overlapping
+#' below <- measureSimil(d1 = rnorm(1000000, mean = 3, 1),
 #'                        d2 = rnorm(1000000, mean = 0, 1),
-#'                        main = "Partial dependence",
+#'                        main = "Partial similarity",
 #'                        colors = colors)
 #' legend(x = "topright", legend = round(below, digits = 2))
-#' # Sensitivity in two completely-different distributions
-#' below <- measureSensit(d1 = rnorm(1000000, mean = 8, 1),
+#' # Similarity in two completely-different distributions
+#' below <- measureSimil(d1 = rnorm(1000000, mean = 8, 1),
 #'                        d2 = rnorm(1000000, mean = 0, 1),
-#'                        main = "Comp. independence",
+#'                        main = "Comp. dissimilarity",
 #'                        colors = colors)
 #' legend(x = "topright", legend = round(below, digits = 2))
 #' # Don't plot, just return the intersection
-#' measureSensit(d1 = rnorm(1000000, mean = 3, 1),
+#' measureSimil(d1 = rnorm(1000000, mean = 3, 1),
 #'               d2 = rnorm(1000000, mean = 0, 1),
 #'               plot = FALSE)
 #' }
@@ -50,7 +50,7 @@
 #' @importFrom stats approxfun density
 
 
-measureSensit <- function(d1, d2, splits = 500, rawData = c(TRUE, TRUE), plot = TRUE, x_limit = "auto", colors = c("red", "blue", "gray"), ...) {
+measureSimil <- function(d1, d2, splits = 500, rawData = c(TRUE, TRUE), plot = TRUE, x_limit = "auto", colors = c("red", "blue", "gray"), ...) {
     # carry out density calculation for raw data argument d1
     if (rawData[1] == TRUE) {
         d1 <- as.data.frame(density(d1)[c("x", "y")])

@@ -14,12 +14,12 @@ divergence-times bayesian inference. You can use it for processing
 output of phylogenetic bayesian programs (such as
 [Beast](https://www.beast2.org/) or
 [MrBayes](http://nbisweden.github.io/MrBayes/index.html)) or to prepare
-input files and decision making. It also supports sensitivity
-calculations using intersection (Ballen, in prep.) for comparing two
-given densities (e.g. prior vs. posterior). Functionality has been added
-for interacting with output from parsimony analyses in TNT, and
-concatenating morphological and molecular matrices for FBD analyses or
-standard topology estimation.
+input files and decision making. It also supports similarity
+calculations using intersection for comparing two given densities
+(e.g. prior vs. posterior). Functionality has been added for interacting
+with output from parsimony analyses in TNT, and concatenating
+morphological and molecular matrices for FBD analyses or standard
+topology estimation.
 
 ## Installation
 

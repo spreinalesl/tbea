@@ -8,7 +8,7 @@ Description: Package for bayesian inference in phylogenetics and evolution.
     estimation using fossils as well as other kinds of data. The package
     provides tools for interacticng with the input and output of bayesian
     platforms in evolutionary biology such as BEAST2. The package implements
-    a way to measure interdependence between probability density functions
+    a way to measure similarity between probability density functions
     in the context of comparisons between prior and posterior bayesian
     densities. It also provides functions for concatenating molecular and
     morphological data for standard tree estimation (e.g., MrBayes) or total
