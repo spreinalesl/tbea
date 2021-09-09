@@ -1,6 +1,6 @@
 Package: tbea
 Title: Tools for Pre- and Post-processing in Bayesian Evolutionary Analyses
-Version: 0.3.2
+Version: 0.4.0
 Authors@R: c(person("Gustavo A.", "Ballen", email = "gaballench@gmail.com", role = c("aut", "cre")), 
     person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut")))
 Description: Package for bayesian inference in phylogenetics and evolution.
