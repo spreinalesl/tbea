@@ -44,6 +44,7 @@
 findParams <- function(q, p, output = "complete", pdfunction, params, initVals = NULL) {
     #  calculate init values if the user did not provide any 
     if (is.null(initVals)) {
+        warning("initVals not provided, will use the mean of quantiles in q for _each_ of the parameters. Parameter estimates might not be reliable even though convergence is reported.")
         initVals <- rep(mean(q), times = length(params))
     }    
     # construct the call as a list
