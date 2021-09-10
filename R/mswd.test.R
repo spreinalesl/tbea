@@ -32,6 +32,14 @@
 #' @importFrom stats pchisq
 
 mswd.test <- function(age, sd) {
+    # check that input is a vector of type numeric
+    if (!is.numeric(age)) {
+        stop("age is not a numeric vector!")
+    }
+    if (!is.numeric(sd)) {
+        stop("sd is not a numeric vector!")
+    }
+    
     # calculate the weighted mean
     weightedMean <- sum(age/sd^2)/sum(1/sd^2)
     
