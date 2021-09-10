@@ -47,20 +47,20 @@ findParams <- function(q, p, output = "complete", pdfunction, params, initVals =
         initVals <- rep(mean(q), times = length(params))
     }    
     # construct the call as a list
-    l <- length(params)
-    cl <- vector("list", 2  + length(params))
+    lpars <- length(params)
+    cl <- vector("list", 2  + lpars)
     cl[[1]] <- as.name(pdfunction)
     cl[[2]] <- q
     names(cl) <- c(NA, "q", params)
     mode(cl) <- "call"
     # the quadratic function will minimize the error around estimates
     quadraticFun <- function(x) {
-        cl[3:(l+2)] <- x
+        cl[3:(lpars+2)] <- x
         res <- eval(cl)
         sum((res - p)^2)
-    }    
+    }
     # pick the method for optimization based on the number of parameters
-    if (l == 1) {
+    if (lpars == 1) {
         res <- optim(initVals, quadraticFun, method = "BFGS")
     } else {
         res <- optim(initVals, quadraticFun)
