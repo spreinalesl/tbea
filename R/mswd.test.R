@@ -33,7 +33,6 @@
 
 mswd.test <- function(age, sd) {
     # calculate the weighted mean
-#    weightedMean <- sum(age/sd^2)/sum(1/sd^2)
     weightedMean <- sum(age/sd^2)/sum(1/sd^2)
     
     # Mean squared weighted deviation (a.k.a. reduced chi-square statistic)
