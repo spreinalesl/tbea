@@ -33,13 +33,13 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v1
           with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
-          use-public-rspm: true
+            r-version: ${{ matrix.config.r }}
+            http-user-agent: ${{ matrix.config.http-user-agent }}
+            use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: rcmdcheck
+          with:
+            extra-packages: rcmdcheck
 
       - name: Check
         env:
@@ -57,6 +57,6 @@ jobs:
       - name: Upload check results
         if: failure()
         uses: actions/upload-artifact@main
-        with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
-          path: check
+          with:
+            name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+            path: check
