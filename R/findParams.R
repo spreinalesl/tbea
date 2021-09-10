@@ -42,6 +42,10 @@
 #' @importFrom stats optim
 
 findParams <- function(q, p, output = "complete", pdfunction, params, initVals = NULL) {
+    # check that p and q are of the same length because the quadratic function requires them paired
+    if (length(p) != length(q)) {
+        stop("The length of p and q must be equal, we need as many quantiles q as probabilities p.")
+    }
     #  calculate init values if the user did not provide any 
     if (is.null(initVals)) {
         warning("initVals not provided, will use the mean of quantiles in q for _each_ of the parameters. Parameter estimates might not be reliable even though convergence is reported.")
