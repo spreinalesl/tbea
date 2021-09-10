@@ -25,3 +25,11 @@ test_that("age is not a numeric vector", {
 test_that("sd is not a numeric vector", {
     expect_error(mswd.test(age = rnorm(10), sd = letters[10]), "sd is not a numeric vector", ignore.case = TRUE)
 })
+
+test_that("output is a numeric vector", {
+    expect_type(mswd.test(age = laventa$age[nonisochronIndex], sd = laventa$one_sigma[nonisochronIndex]), "double")
+})
+
+test_that("output is of length 1", {
+    expect_length(mswd.test(age = laventa$age[nonisochronIndex], sd = laventa$one_sigma[nonisochronIndex]), 1)
+})
