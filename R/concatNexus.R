@@ -165,7 +165,7 @@ concatNexus <- function(matrices = NULL, pattern, path, filename, morpho = FALSE
     from_ape <- sum(grepl(pattern = "write.nexus.data.R",
                           x = outputNEXUS, ignore.case = TRUE))
     if (from_ape) {
-        outputNEXUS[2] <- paste("[Data written by concatNexus.R ",  Sys.time(), "]", sep = "")
+        outputNEXUS[2] <- paste("[Data written by tbea::concatNexus ",  Sys.time(), "]", sep = "")
     }
     # write the summary table with the dimmension of each partition to be included into the MrBayes script
     endElem <- vector(mode = "integer", length = length(NCHARvector))
