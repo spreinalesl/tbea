@@ -25,8 +25,23 @@
 #' @export
 #' @importFrom stats dlnorm
 
-lognormalBeast <- function(M, S, meanInRealSpace = TRUE, offset = 0, from, to, by = 0.05) {
+lognormalBeast <- function(M, S, meanInRealSpace = TRUE, offset = 0, from = NULL, to = NULL, by = 0.05) {
+    
+    # some input checks
+    if (is.null(from) | is.null(to)) {
+        stop("Both arguments \'from\' and \'to\' must be defined")
+    }
+    
+    # check that S is proper
+    if (S <= 0) {
+        stop("The standard deviation \'S\' must be a positive number higher than zero")
+    }
+    
+    # make sure that we can apply a logarithm on the M defined by the user
     if (meanInRealSpace == TRUE) {
+        if (M <= 0) {
+            stop("The mean \'M\' must be a positive number higher than zero")
+        }
         M <- log(M)
     }
     x <- seq(from = from, to = to, by = by) + offset

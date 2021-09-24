@@ -4,7 +4,15 @@
 \alias{lognormalBeast}
 \title{Constructing a curve for the user-specified lognormal prior using Beast2 parameters}
 \usage{
-lognormalBeast(M, S, meanInRealSpace = TRUE, offset = 0, from, to, by = 0.05)
+lognormalBeast(
+  M,
+  S,
+  meanInRealSpace = TRUE,
+  offset = 0,
+  from = NULL,
+  to = NULL,
+  by = 0.05
+)
 }
 \arguments{
 \item{M}{Mean of the lognormal density in Beast2.}
