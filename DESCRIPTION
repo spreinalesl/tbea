@@ -1,6 +1,6 @@
 Package: tbea
 Title: Tools for Pre- and Post-processing in Bayesian Evolutionary Analyses
-Version: 0.5.1
+Version: 0.5.2
 Authors@R: c(person("Gustavo A.", "Ballen", email = "gaballench@gmail.com", role = c("aut", "cre")), 
     person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut")))
 Description: Package for bayesian inference in phylogenetics and evolution.
@@ -13,8 +13,8 @@ Description: Package for bayesian inference in phylogenetics and evolution.
     densities. It also provides functions for concatenating molecular and
     morphological data for standard tree estimation (e.g., MrBayes) or total
     evidence FBD divergence time estimation (e.g., Beast or RevBayes).
-Depends: R (>= 3.1.0)
-Imports: ape, apex
+Depends: R (>= 3.5.0)
+Imports: ape, apex, Rfit, Hmisc, boot
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
