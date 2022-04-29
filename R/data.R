@@ -20,3 +20,19 @@
   #' }
 #' @references Flynn, J.J., Guerrero, J. & Swisher III, C.C. (1997) Geochronology of the Honda Group. In: R. F. Kay, R. H. Madden, R. L. Cifelli, and J. J. Flynn (Eds), Vertebrate Paleontology in the Neotropics: the Miocene Fauna of La Venta, Colombia. Smithsonian Institution Press, pp. 44–60. 
 "laventa"
+
+#' Divergence-time estimation data for cis-trans-Andean pairs
+#'
+#' A dataset containing point estimates and uncertainty intervals of
+#' divergence times for clade pairs east and west of the Andes,
+#' compiled by Ballen (2020).
+#'
+#' @usage data(andes)
+#' 
+#' @format A data frame with three columns:
+#' \describe{
+  #' \item{ages}{Estimated age (in Ma) from a given rock sample}
+  #' \item{min}{Standard deviation of the age estimate}
+  #' \item{max}{Sample code as in Table 3.2}
+#' @references Ballen, Gustavo A. 2020. Fossil freshwater fishes and the biogeography of northern South America. 2020. PhD thesis, Museu de Zoologia, Universidade de São Paulo, São Paulo, 2020. doi:10.11606/T.38.2020.tde-06052020-181631. 
+"andes"
