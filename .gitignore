@@ -2,6 +2,9 @@
 .Rhistory
 .Rapp.history
 
+# ignore prototype code
+prototipos/*
+
 # Session Data files
 .RData
 *.rdb
