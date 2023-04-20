@@ -2,35 +2,21 @@
 % Please edit documentation in R/fasta2nexus.R
 \name{fasta2nexus}
 \alias{fasta2nexus}
-\title{fasta2nexus: Function for converting molecular alignments from fasta to nexus format}
+\title{fasta2nexus (deprecated): Function for converting molecular alignments from fasta to nexus format}
 \usage{
-fasta2nexus(path, outpath = NULL, pattern, wholeAlign = TRUE)
+fasta2nexus(...)
 }
 \arguments{
-\item{path}{A vector of type 'character' with the path to the fasta alignments.}
-
-\item{outpath}{A vector of type 'character' with the path to the nexus matrices. Defaults to NULL, so that the output files are written into the same directory declared in \code{path}}
-
-\item{pattern}{A vector of type 'character' with the string (also supports regular expressions) to be used as keyword for selecting the fasta files. The most basic case is to use ".fasta$" for a file ending with the extension ".fasta".}
-
-\item{wholeAlign}{Whether to fuse the fasta alignments into a concatenated molecular-only, continuous nexus matrix. Defaults to TRUE.}
+\item{...}{A placeholder for any argument that used to be in this function.}
 }
 \value{
-This function writes to the disk several files, at least one nexus originally from a fasta file, and potentially a concatenated file if several fasta are provided.
+This function returns an error because it has been deprecated.
 }
 \description{
-fasta2nexus: Function for converting molecular alignments from fasta to nexus format
+fasta2nexus (deprecated): Function for converting molecular alignments from fasta to nexus format
 }
 \details{
-This function will convert from fasta to nexus, and optionally concatenate a single nexus with the content of all fasta files.
-}
-\examples{
-# Convert all fasta alignments into nexus matrices in a given path,
-# with the output files in the same directory, for files
-# ending with the pattern 'trimmed.nex'.
-\dontrun{
-fasta2nexus(path = "sequences", outpath = NULL, pattern = "trimmed.fasta$", wholeAlign = TRUE)
-}
+This function was deprecated from tbea v1.0.0 onwards. For using this function please install tbea v0.5.0.
 }
 \author{
 Gustavo A. Ballen
