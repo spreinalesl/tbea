@@ -23,8 +23,9 @@ and 0.975.}
 \item{R}{The number of iterations to be used in the Bootstrap
 method.}
 
-\item{robust}{Whether to use robust regression using `Rfit::rfit`
-or ordinary least squares `lm`.}
+\item{robust}{Logical value indicating whether to use robust
+regression using `Rfit::rfit` (`robust = TRUE`) or ordinary
+least squares `lm` (`robust = FALSE`).}
 }
 \value{
 A named list with three elements: `param`, the value
