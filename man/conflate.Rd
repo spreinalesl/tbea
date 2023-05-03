@@ -15,8 +15,6 @@ conflate(pdfs, plot = TRUE, from, to, n, add = FALSE)
 \item{from, to, n}{The appropriate values from and to which to calculate the conflation, and a number of points n. These are the same used by the function curve but are still necessary even if no plot is required.}
 
 \item{add}{Whether to add the curve to an existing plot.}
-
-\item{x}{A symbol inside the code is passed without need for specification. Making it clear here because of notes in testing.}
 }
 \value{
 A tree of class phylo with summary branch lengths in tree$edge.length.

@@ -4,7 +4,6 @@
 #' @param plot Whether to plot using curve
 #' @param from,to,n The appropriate values from and to which to calculate the conflation, and a number of points n. These are the same used by the function curve but are still necessary even if no plot is required.
 #' @param add Whether to add the curve to an existing plot.
-#' @param x A symbol inside the code is passed without need for specification. Making it clear here because of notes in testing.
 #' 
 #' @return A tree of class phylo with summary branch lengths in tree$edge.length.
 #'
