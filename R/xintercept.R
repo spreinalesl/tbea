@@ -16,8 +16,9 @@
 #' @param R The number of iterations to be used in the Bootstrap
 #' method.
 #' 
-#' @param robust Whether to use robust regression using `Rfit::rfit`
-#' or ordinary least squares `lm`.
+#' @param robust Logical value indicating whether to use robust
+#' regression using `Rfit::rfit` (`robust = TRUE`) or ordinary
+#' least squares `lm` (`robust = FALSE`).
 #'
 #' @return A named list with three elements: `param`, the value
 #' of x_hat; `ci`, the lower and upper values of the confidence
@@ -84,9 +85,10 @@ xintercept <- function(x, method, alpha = 0.05, p = c(0.025, 0.975), R = 1000, r
         } else {
             stop("Robust must be one of TRUE or FALSE")
         }
-        result <- CI_DraperSmith_X0(x = regression, alpha = alpha)
+        
+        result <- .CI_DraperSmith_X0(x = regression, alpha = alpha)
     } else if(method == "Bootstrap") {
-        result <- CI_Boot_X0(x = ecdfx$x, y = ecdfx$y, p = p, R = R, robust = robust)
+        result <- .CI_Boot_X0(x = ecdfx$x, y = ecdfx$y, p = p, R = R, robust = robust)
     } else {
         stop("Method must be either Draper-Smith or Bootstrap")
     }
@@ -98,7 +100,7 @@ xintercept <- function(x, method, alpha = 0.05, p = c(0.025, 0.975), R = 1000, r
     return(result)
 }
 
-#' CI_DraperSmith_X0: Estimate the x-intercept with the method of Draper-Smith 
+#' .CI_DraperSmith_X0: Estimate the x-intercept with the method of Draper-Smith 
 #' 
 #' @param x A vector of type numeric with time data points.
 #'
@@ -118,38 +120,35 @@ xintercept <- function(x, method, alpha = 0.05, p = c(0.025, 0.975), R = 1000, r
 #' @importFrom Hmisc Ecdf
 #' @importFrom Rfit rfit
 
-CI_DraperSmith_X0 <- function(x, alpha = 0.05) {
+.CI_DraperSmith_X0 <- function(x, alpha = 0.05) {
     if (inherits(x, "rfit")) {
         x$model <- data.frame(y = x$y,
                               x = x$x[,"x"],
                               stringsAsFactors = FALSE)
     }
     intercept <- coef(x)[1]              
-    slope <- coef(x)[2]                  
-    meanX <- mean(x$model[,2])           
+    b1 <- coef(x)[2]                  
+    Xbar <- mean(x$model[,2])           
     n <- length(x$model[,2])             
-    tstar <- qt(alpha/2, n-2)            
+    tn_2 <- qt(alpha/2, n-2)            
     sxx <- sum(x$model[,2]^2) - sum(x$model[,2])^2 / n
     SSresidual <- (1-cor(x$model[,1], x$model[,2])^2) * 
                   (sum(x$model[,1]^2)-sum(x$model[,1])^2/n)
     S <- sqrt(SSresidual/(n-2))
-    SEslope <- S / sqrt(sxx)
-    Xintercept <- - intercept / slope
-    y0 <- 0
-    g <- (tstar / (slope/SEslope))^2
-    left <- (Xintercept - meanX) * g
-    bottom <- 1 - g
-    Right <- (tstar * S / slope) * sqrt( ((Xintercept - meanX)^2/sxx) + bottom/n)
-    lower <- Xintercept + (left - Right) / bottom
-    upper <- Xintercept + (left + Right) / bottom
+    SEb1 <- S / sqrt(sxx)
+    X0 <- - intercept / b1
+    g <- (tn_2 / (b1/SEb1))^2
+    left <- (X0 - Xbar) * g
+    Right <- (tn_2 * S / b1) * sqrt( ((X0 - Xbar)^2/sxx) + (1 - g)/n)
+    Xbounds <- X0 + (left + c(-1, 1)*Right) / (1 - g)
 
-    out <- c(lower, Xintercept, upper)
+    out <- c(Xbounds[1], X0, Xbounds[2])
     names(out) <- c("lower", "x_hat", "upper")
     
     return(out)
 }
 
-#' CI_Boot_X0: Estimate the x-intercept with the method of Bootstrap 
+#' .CI_Boot_X0: Estimate the x-intercept with the method of Bootstrap 
 #' 
 #' @param x,y Two vectors of type numeric with the ecdf coordinates.
 #'
@@ -176,7 +175,7 @@ CI_DraperSmith_X0 <- function(x, alpha = 0.05) {
 #' @importFrom Hmisc Ecdf
 #' @importFrom Rfit rfit
 
-CI_Boot_X0 <- function(x, y, p = c(0.025, 0.975), R = 1000, robust = FALSE) {
+.CI_Boot_X0 <- function(x, y, p = c(0.025, 0.975), R = 1000, robust = FALSE) {
     d <- data.frame(x, y)
     bootObj <- boot::boot(d, 
                           function(d, i) {
