@@ -27,6 +27,6 @@ uncertainty in a more meaningful way than using a majority-rule consensus.
 # tests
 set.seed(1)
 trl <- ape::rmtree(10, 4)
-tpf <- topoFreq(unroot(trl), output="trees")
+tpf <- topoFreq(ape::unroot(trl), output="trees")
 
 }

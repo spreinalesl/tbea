@@ -14,7 +14,7 @@
 #' # tests
 #' set.seed(1)
 #' trl <- ape::rmtree(10, 4)
-#' tpf <- topoFreq(unroot(trl), output="trees")
+#' tpf <- topoFreq(ape::unroot(trl), output="trees")
 #'
 #' @export
 #' @importFrom ape dist.topo

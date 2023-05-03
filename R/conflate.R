@@ -4,6 +4,7 @@
 #' @param plot Whether to plot using curve
 #' @param from,to,n The appropriate values from and to which to calculate the conflation, and a number of points n. These are the same used by the function curve but are still necessary even if no plot is required.
 #' @param add Whether to add the curve to an existing plot.
+#' @param x A symbol inside the code is passed without need for specification. Making it clear here because of notes in testing.
 #' 
 #' @return A tree of class phylo with summary branch lengths in tree$edge.length.
 #'
@@ -17,11 +18,15 @@
 #' a number n of equidistant points between from and to.
 #' @examples
 #' \dontrun{
-#' conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)", "density_fun(x, 'dnorm', mean=3, sd=1)"), from=-4, to=4, n=101, add=TRUE, plot=TRUE)
+#' conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)",
+#'            "density_fun(x, 'dnorm', mean=3, sd=1)"),
+#'          from=-4, to=4, n=101, add=TRUE, plot=TRUE)
 #' curve(density_fun(x, 'dnorm', mean=0, sd=1), add=TRUE, col="red")
 #' curve(density_fun(x, 'dnorm', mean=3, sd=1), add=TRUE, col="blue")
 #' 
-#' conflated_normals <- conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)", "density_fun(x, 'dnorm', mean=3, sd=1)"), from=-4, to=4, n=101, plot=FALSE)
+#' conflated_normals <- conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)",
+#'                                 "density_fun(x, 'dnorm', mean=3, sd=1)"),
+#'                               from=-4, to=4, n=101, plot=FALSE)
 #' plot(conflated_normals)
 #' }
 #' 
