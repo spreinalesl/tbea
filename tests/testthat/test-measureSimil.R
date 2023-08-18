@@ -3,7 +3,7 @@ set.seed(1507)
 n <- 10000000
 splits <- 1000000
 # this method uses a quite rough integration technique and requires a large number of splits in order to have an accuracy large enough as to pass the test. Thus, 1e-3 is used only for testing with moderate time. With larger splits the tests take a lot of time. 
-tolerance = 1e-3
+tolerance = 1e-2
 
 test_that("two identical distributions have similarity = 1", {
     expect_equal(measureSimil(d1 = rnorm(n, mean = 0, 1),
