@@ -68,6 +68,9 @@ concatNexus <- function(matrices = NULL, pattern, path, filename, morpho = FALSE
     }
     # reorder the filenames so that the morpho file comes last
     if (morpho) {
+        if (is.null(morphoFilename)) {
+            stop("morpho is set to TRUE but morphoFilename is NULL, a filename is necessary in this case\n")
+        }
         choppedFilename <- nexFiles[grep(pattern = morphoFilename, x = nexFiles)]
         nexFiles <- nexFiles[-grep(pattern = morphoFilename, x = nexFiles)]
         nexFiles <- c(nexFiles, choppedFilename)
