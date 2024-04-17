@@ -14,10 +14,14 @@
 #' @param cols either an integer vector with the position of the columns to
 #' pick, or a character vector with the column names to pick. Defaults to NULL.
 #' 
-#' @param bar.lty, bar.lwd The line type and width to be used as error bars.
+#' @param bar.lty  The line type to be used as error bars.
+#'
+#' @param bar.lwd As above but the width
 #' 
-#' @param identity.lty, identity.lwd The line type and width to be used in
+#' @param identity.lty The line type to be used in
 #' the identity y = x line
+#'
+#' @param identity.lwd As above but the width.
 #'
 #' @param extra.space numeric vector of length 1. How much space to be allowed
 #' in both xlim and ylim depending on the smallest value in highest density
