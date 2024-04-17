@@ -4,12 +4,14 @@
 \alias{topoFreq}
 \title{Frequency of topologies in a tree sample}
 \usage{
-topoFreq(mphy, output = "index")
+topoFreq(mphy, output = "index", maxtrees = 10000)
 }
 \arguments{
 \item{mphy}{An object of class multiPhylo}
 
 \item{output}{A character indicating whether the tree indices or the actual trees should be returned. Defaults to "index"}
+
+\item{maxtrees}{A numeric indicating whether to warn about having more trees than the arbitrary threshold}
 }
 \value{
 A list with an element containing the the different tree clusters (as multiPhylo)
@@ -22,6 +24,12 @@ Frequency of topologies in a tree sample
 This function can be used e.w. with a posterior sample of trees from a bayesian analysis where we
 want to explore the distribution of topologies in the posterior of trees. This way we can assess topological
 uncertainty in a more meaningful way than using a majority-rule consensus.
+
+The use of `maxtrees` is actually a convenience for keeping in mind that large amounts of trees can cause memory
+issues. This can end up in situations which are difficult to debug but that from personal experience have come from
+exactly that: More trees than memory can fit or which can be processed for calculating similarity. This number will _not_
+break the function call but will return a warning. Try to avoid modifying its default value unless you are sure it will not
+cause any issues under your computing conditions (e.g. when lots of trees are being processed but also large RAM is available).
 }
 \examples{
 # tests
