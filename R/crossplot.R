@@ -61,7 +61,9 @@
 #' @export
 #' @importFrom coda mcmc HPDinterval
 #' @importFrom graphics plot segments abline
-
+#' @importFrom stats median
+#' @importFrom utils read.delim
+#' 
 crossplot <- function(log1Path, log2Path, skip.char="#", pattern=NULL,
                       cols=NULL, bar.lty, bar.lwd, identity.lty, identity.lwd,
                       extra.space=0.5, ...) {
@@ -74,13 +76,12 @@ crossplot <- function(log1Path, log2Path, skip.char="#", pattern=NULL,
         stop("Only one of the arguments is allowed at a time: Either
               `pattern` or `cols` must be non-null\n")
     }
+    # read the log files
     datLog1 <- read.delim(file = log1Path, header = TRUE,
                            comment.char = skip.char,
                            stringsAsFactors = FALSE)
     datLog1 = datLog1[, grep(pattern, colnames(datLog1))]
-    
-    ### Read the second log as a data farme
-    
+        
     datLog2 <- read.delim(file = log2Path, header = TRUE,
                            comment.char = skip.char,
                            stringsAsFactors = FALSE)
