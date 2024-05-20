@@ -56,6 +56,6 @@ table2nexus <- function(path, datatype = c("standard", "dna", "rna", "protein"),
     NEXUSheader <- gsub(pattern="_NCHAR", replacement=NCHAR, x=NEXUSheader)
     DATA <- paste("    ", taxa, "      ", chars, sep="")
     OUTPUT <- c(NEXUSheader, DATA, "  ;", "END;")
-    writeLines(OUTPUT)
+    writeLines(OUTPUT, con=con)
 }
     

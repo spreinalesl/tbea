@@ -40,7 +40,7 @@
 #' # Concatenate arbitrary matrices in the working directory,
 #' # including a morphological matrix, return a concatenated file in the same dir
 #' \dontrun{
-#' concatNexus(matrices = c("coi.nex", "rag1.nex", "cytb.nex"),
+#' concatNexus(matrices = c("coi.nex", "rag1.nex", "cytb.nex", "morphology.nex"),
 #'             filename = "concatenatedMolmorph.nexus", 
 #'             morpho = TRUE,
 #'             morphoFilename = "morphology.nex",
@@ -48,7 +48,6 @@
 #' }
 #' @export
 #' @importFrom utils write.table
-
 
 concatNexus <- function(matrices = NULL, pattern, path, filename, morpho = FALSE, morphoFilename = NULL, sumFilename) {
     NCHARregex <- "NCHAR[[:blank:]]*=[[:blank:]]*[[:digit:]]+"
