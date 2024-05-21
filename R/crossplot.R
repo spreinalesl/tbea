@@ -119,9 +119,9 @@ crossplot <- function(log1Path, log2Path, skip.char="#", pattern=NULL,
     ### then actually plot the thing. 
     plot(log1Stats$medianj,
          log2Stats$medianj,
-         xlim = c((min(log1Stats$HPDupperj) - extra.space),
+         xlim = c((min(log1Stats$HPDlowerj) - extra.space),
          (max(log1Stats$HPDupperj) + extra.space)),
-         ylim = c((min(log2Stats$HPDupperj) - extra.space),
+         ylim = c((min(log2Stats$HPDlowerj) - extra.space),
          (max(log2Stats$HPDupperj) + extra.space)), ...)
     
     for (j in 1:nrow(log1Stats)) {
