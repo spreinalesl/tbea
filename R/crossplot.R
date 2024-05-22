@@ -11,7 +11,7 @@
 #' @param pattern character vector of length 1. the pattern for subsetting the
 #' columns containing the data to be plotted.
 #'
-#' @param cols either an integer vector with the position of the columns to
+#' @param idx.cols either an integer vector with the position of the columns to
 #' pick, or a character vector with the column names to pick. Defaults to NULL.
 #' 
 #' @param bar.lty  The line type to be used as error bars.
@@ -65,28 +65,42 @@
 #' @importFrom utils read.delim
 #' 
 crossplot <- function(log1Path, log2Path, skip.char="#", pattern=NULL,
-                      cols=NULL, bar.lty, bar.lwd, identity.lty, identity.lwd,
+                      idx.cols=NULL, bar.lty, bar.lwd, identity.lty, identity.lwd,
                       extra.space=0.5, ...) {
     # made sure that pattern and cols will not interact when subsetting
-    if (is.null(pattern) & is.null(cols)) {
+    if (is.null(pattern) & is.null(idx.cols)) {
         stop("Either a pattern to look up at column names or the column
               positions are required\n")
     }
-    if (!is.null(pattern) & !is.null(cols)) {
+    if (!is.null(pattern) & !is.null(idx.cols)) {
         stop("Only one of the arguments is allowed at a time: Either
-              `pattern` or `cols` must be non-null\n")
+              `pattern` or `idx.cols` must be non-null\n")
     }
-    # read the log files
-    datLog1 <- read.delim(file = log1Path, header = TRUE,
-                           comment.char = skip.char,
-                           stringsAsFactors = FALSE)
-    datLog1 = datLog1[, grep(pattern, colnames(datLog1))]
-        
-    datLog2 <- read.delim(file = log2Path, header = TRUE,
-                           comment.char = skip.char,
-                           stringsAsFactors = FALSE)
-    datLog2 = datLog2[, grep(pattern, colnames(datLog2))]
-    
+    # read if using a text pattern
+    if (!is.null(pattern)) {
+        # read the log files
+        datLog1 <- read.delim(file = log1Path, header = TRUE,
+                               comment.char = skip.char,
+                               stringsAsFactors = FALSE)
+        datLog1 = datLog1[, grep(pattern, colnames(datLog1))]
+            
+        datLog2 <- read.delim(file = log2Path, header = TRUE,
+                               comment.char = skip.char,
+                               stringsAsFactors = FALSE)
+        datLog2 = datLog2[, grep(pattern, colnames(datLog2))]
+    }
+    # read if using column indices
+    if (!is.null(idx.cols)) {
+        datLog1 <- read.delim(file = log1Path, header = TRUE,
+                               comment.char = skip.char,
+                               stringsAsFactors = FALSE)
+        datLog1 = datLog1[, idx.cols]
+            
+        datLog2 <- read.delim(file = log2Path, header = TRUE,
+                               comment.char = skip.char,
+                               stringsAsFactors = FALSE)
+        datLog2 = datLog2[, idx.cols]
+    }
     ## Calculate a summary table for all the log files
     
     # for the first log

@@ -9,7 +9,7 @@ crossplot(
   log2Path,
   skip.char = "#",
   pattern = NULL,
-  cols = NULL,
+  idx.cols = NULL,
   bar.lty,
   bar.lwd,
   identity.lty,
@@ -30,7 +30,7 @@ start with the symbol when reading data.}
 \item{pattern}{character vector of length 1. the pattern for subsetting the
 columns containing the data to be plotted.}
 
-\item{cols}{either an integer vector with the position of the columns to
+\item{idx.cols}{either an integer vector with the position of the columns to
 pick, or a character vector with the column names to pick. Defaults to NULL.}
 
 \item{bar.lty}{The line type to be used as error bars.}
