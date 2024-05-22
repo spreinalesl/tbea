@@ -1,5 +1,5 @@
 Package: tbea
-Title: Tools for Pre- and Post-Processing in Bayesian Evolutionary Analyses
+Title: Tools for Pre- And Post-Processing in Bayesian Evolutionary Analyses
 Version: 1.4.2
 Authors@R: c(person("Gustavo A.", "Ballen", email = "gustavo.a.ballen@gmail.com", role = c("aut", "cre")), 
     person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut")))
