@@ -10,7 +10,7 @@
 ## Overview
 
 An R package for pre- and post-processing in phylogenetic and
-divergence-times bayesian inference. You can use it for processing
+divergence-times Bayesian inference. You can use it for processing
 output of phylogenetic bayesian programs (such as
 [Beast](https://www.beast2.org/) or
 [MrBayes](http://nbisweden.github.io/MrBayes/index.html)) or to prepare

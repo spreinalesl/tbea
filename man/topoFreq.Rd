@@ -21,7 +21,7 @@ and the absolute, cumulative, and relative frequencies of each topology in the t
 Frequency of topologies in a tree sample
 }
 \details{
-This function can be used e.w. with a posterior sample of trees from a bayesian analysis where we
+This function can be used e.w. with a posterior sample of trees from a Bayesian analysis where we
 want to explore the distribution of topologies in the posterior of trees. This way we can assess topological
 uncertainty in a more meaningful way than using a majority-rule consensus.
 

@@ -60,7 +60,7 @@
 #' }
 #' @export
 #' @importFrom coda mcmc HPDinterval
-#' @importFrom graphics plot segments abline
+#' @importFrom graphics plot segments abline points
 #' @importFrom stats median
 #' @importFrom utils read.delim
 #' 

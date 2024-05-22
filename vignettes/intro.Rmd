@@ -15,7 +15,7 @@ library(tbea)
 
 This vignette deals with more real-world examples than the documentation examples. It complements the user manual and eventual published references on the usage of the package.
 
-The main place in evolutionary biology where the features contained in `tbea` belong is in the core of divergence time estimation and incorporation of paleontological and geological information into estimation of the time component of phylogenies and diversification analyses. Here, the tools present in the package aid in implementing information from these fields into bayesian analyses, mainly through specification of priors, the most conspicuous feature of bayesian inference. However, prior specification is a very difficult task and there are few if any rules to follow, along with a lot of misunderstanding along with clearly-unjustified practices.
+The main place in evolutionary biology where the features contained in `tbea` belong is in the core of divergence time estimation and incorporation of paleontological and geological information into estimation of the time component of phylogenies and diversification analyses. Here, the tools present in the package aid in implementing information from these fields into Bayesian analyses, mainly through specification of priors, the most conspicuous feature of Bayesian inference. However, prior specification is a very difficult task and there are few if any rules to follow, along with a lot of misunderstanding along with clearly-unjustified practices.
 
 # Priors
 
@@ -58,7 +58,7 @@ plot(lnvals, type = "l", lwd = 3)
 
 # Density similarity
 
-One hot topic in model and tool comparisons is the similarity of the posterior to the prior, that is, how much could our results resemble de distribution set in the prior. For instance, if the posterior is identical to the prior, that means that the likelihood (or the data) is not providing information, and this is very risky as there would be the potential to manipulate the results of bayesian analyses.
+One hot topic in model and tool comparisons is the similarity of the posterior to the prior, that is, how much could our results resemble de distribution set in the prior. For instance, if the posterior is identical to the prior, that means that the likelihood (or the data) is not providing information, and this is very risky as there would be the potential to manipulate the results of Bayesian analyses.
 
 ## The `measureSimil` function
 
