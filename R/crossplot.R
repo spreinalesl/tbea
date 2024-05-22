@@ -157,4 +157,7 @@ crossplot <- function(log1Path, log2Path, skip.char="#", pattern=NULL,
     }
     # Add the y = x line
     abline(a = 0, b = 1, lwd=identity.lwd, lty=identity.lty)
+    # overlay the points to the lines in the plot
+    points(x=log1Stats$medianj,
+           y=log2Stats$medianj, ...)    
 }
