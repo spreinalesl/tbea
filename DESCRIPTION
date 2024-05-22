@@ -6,7 +6,7 @@ Authors@R: c(person("Gustavo A.", "Ballen", email = "gustavo.a.ballen@gmail.com"
 Description: Package for Bayesian inference in phylogenetics and evolution.
     It provides functions for prior specification in divergence time
     estimation using fossils as well as other kinds of data. The package
-    provides tools for interacting with the input and output of bayesian
+    provides tools for interacting with the input and output of Bayesian
     platforms in evolutionary biology such as BEAST2, MrBayes, RevBayes,
     or MCMCTree.
     The package implements a way to measure similarity between probability
