@@ -1,19 +1,22 @@
 Package: tbea
 Title: Tools for Pre- and Post-processing in Bayesian Evolutionary Analyses
-Version: 1.4.0
+Version: 1.4.1
 Authors@R: c(person("Gustavo A.", "Ballen", email = "gaballench@gmail.com", role = c("aut", "cre")), 
     person("Sandra", "Reinales", email = "spreinalesl@gmail.com", role = c("aut")))
 Description: Package for bayesian inference in phylogenetics and evolution.
     It provides functions for prior specification in divergence time
     estimation using fossils as well as other kinds of data. The package
     provides tools for interacticng with the input and output of bayesian
-    platforms in evolutionary biology such as BEAST2, MrBayes, or MCMCTree.
+    platforms in evolutionary biology such as BEAST2, MrBayes, RevBayes,
+    or MCMCTree.
     The package implements a way to measure similarity between probability
     density functions in the context of comparisons between prior and
-    posterior bayesian densities, as well as code for calculating the combination
-    of distributions using conflation.
+    posterior bayesian densities, as well as code for calculating the
+    combination of distributions using conflation. Tools for estimating the
+    origination time in collections of distributions using x-intercept and
+    stratigraphic intervals are also available.
 Depends: R (>= 3.5.0)
-Imports: ape, Rfit, Hmisc, boot, graphics, stats, utils, coda
+Imports: ape, Rfit, boot, graphics, stats, utils, coda
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true

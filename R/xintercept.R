@@ -68,12 +68,14 @@
 #' }
 #' @export
 #' @importFrom boot boot
-#' @importFrom Hmisc Ecdf
 #' @importFrom Rfit rfit
-#' @importFrom stats coef cor lm qt quantile
+#' @importFrom stats coef cor ecdf lm qt quantile
 
 xintercept <- function(x, method, alpha = 0.05, p = c(0.025, 0.975), R = 1000, robust){
-    ecdfx <- Hmisc::Ecdf(x, pl = FALSE)
+    x <- sort(x)
+    yfun <- ecdf(x)
+    y <- yfun(x)
+    ecdfx <- list(x=x, y=y)
     ecdfx$y <- 1 - ecdfx$y # in order to represent properly in time this information, we need the complement of cumulative probability
     if (method == "Draper-Smith") {
         if (!robust) {
@@ -117,8 +119,8 @@ xintercept <- function(x, method, alpha = 0.05, p = c(0.025, 0.975), R = 1000, r
 #' 
 #' @noRd
 #' @importFrom boot boot
-#' @importFrom Hmisc Ecdf
 #' @importFrom Rfit rfit
+#' @importFrom stats ecdf
 
 .CI_DraperSmith_X0 <- function(x, alpha = 0.05) {
     if (inherits(x, "rfit")) {
@@ -172,8 +174,8 @@ xintercept <- function(x, method, alpha = 0.05, p = c(0.025, 0.975), R = 1000, r
 #' 
 #' @noRd
 #' @importFrom boot boot
-#' @importFrom Hmisc Ecdf
 #' @importFrom Rfit rfit
+#' @importFrom stats ecdf
 
 .CI_Boot_X0 <- function(x, y, p = c(0.025, 0.975), R = 1000, robust = FALSE) {
     d <- data.frame(x, y)
