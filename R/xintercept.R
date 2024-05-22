@@ -39,16 +39,15 @@
 #' ages <- ages[complete.cases(ages)] # remove NAs
 #' ages <- ages[which(ages < 10)] # remove outliers
 #' 
+#' \dontrun{
 #' # Draper-Smith, OLS
 #' draperSmithNormalX0 <- xintercept(x = ages, method = "Draper-Smith", alpha = 0.05, robust = FALSE)
 #' # Draper-Smith, Robust fit
-#' draperSmithRobustX0 <-xintercept(x = ages, method = "Draper-Smith", alpha = 0.05, robust = TRUE)
+#' draperSmithRobustX0 <- xintercept(x = ages, method = "Draper-Smith", alpha = 0.05, robust = TRUE)
 #' # Bootstrap, OLS
 #' bootstrapNormalX0 <- xintercept(x = ages, method = "Bootstrap", p = c(0.025, 0.975), robust = FALSE)
 #' # Bootstrap, Robust fit
 #' bootstrapRobustX0 <- xintercept(x = ages, method = "Bootstrap", p = c(0.025, 0.975), robust = TRUE)
-#'
-#' \donttest{
 #' # plot the estimations
 #' hist(ages, probability = TRUE, col = rgb(red = 0, green = 0, blue = 1, alpha = 0.3),
 #'      xlim = c(0, 10), main = "CDF-based on confidence intervals", xlab = "Age (Ma)")
