@@ -3,6 +3,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/gaballench/tbea/workflows/R-CMD-check/badge.svg)](https://github.com/gaballench/tbea/actions)
+[![](https://www.r-pkg.org/badges/version/tbea)](https://cran.r-project.org/package=tbea)
 <!-- badges: end -->
 
 # tbea
