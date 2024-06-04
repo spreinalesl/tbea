@@ -28,7 +28,7 @@
 #' @examples
 #' \dontrun{
 #' # this will return the matrix to the console rather than to a file
-#' table2nexus(path="../prototipos/morpho.csv", datatype="standard", header=FALSE, sep=",")
+#' table2nexus(path="morpho.csv", datatype="standard", header=FALSE, sep=",")
 #' }
 #' @export
 #' @importFrom utils read.delim

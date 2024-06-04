@@ -26,16 +26,18 @@ tree density. Alternatively, it can be used with a single element provided that 
 first enclosed in a list
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
+library(ape)
 trl <- ape::rmtree(10, 4)
 tpf <- topoFreq(unroot(trl), output="trees")
 sumtrees <- summaryBrlen(tpf$trees, method = "median")
+oldpar <- par(no.readonly = TRUE)
 par(mfrow=c(1,3))
 plot(sumtrees[[1]], type="unrooted", show.node.label=FALSE, cex=1.5)
 plot(sumtrees[[2]], type="unrooted", show.node.label=FALSE, cex=1.5)
 plot(sumtrees[[3]], type="unrooted", show.node.label=FALSE, cex=1.5)
-par(mfrow=c(1,1))
+par(oldpar)
 }
 
 }

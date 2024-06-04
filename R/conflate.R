@@ -16,13 +16,7 @@
 #' conflated PDF on the sequence of x values determined by
 #' a number n of equidistant points between from and to.
 #' @examples
-#' \dontrun{
-#' conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)",
-#'            "density_fun(x, 'dnorm', mean=3, sd=1)"),
-#'          from=-4, to=4, n=101, add=TRUE, plot=TRUE)
-#' curve(density_fun(x, 'dnorm', mean=0, sd=1), add=TRUE, col="red")
-#' curve(density_fun(x, 'dnorm', mean=3, sd=1), add=TRUE, col="blue")
-#' 
+#' \donttest{
 #' conflated_normals <- conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)",
 #'                                 "density_fun(x, 'dnorm', mean=3, sd=1)"),
 #'                               from=-4, to=4, n=101, plot=FALSE)
@@ -60,7 +54,7 @@ conflate <- function(pdfs, plot = TRUE, from, to, n, add = FALSE) {
 #' See the documentation for each individual distribution to call their parameters
 #' adequately. Argument names and values should be used.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' c("density_fun(x, 'dnorm', mean=0, sd=1)",
 #'   "density_fun(x, 'dnorm', mean=-1, sd=1)",
 #'   "density_fun(x, 'dnorm', mean=1, sd=1)")
@@ -93,7 +87,7 @@ density_fun <- function(x, dist, ...) {
 #' with densities / int(densities) in an appropriate
 #' interval from--to
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' conflated <- .str_conflate("density_fun(x, 'dnorm', mean=0, sd=1)", "density_fun(x, 'dnorm', mean=3, sd=1)", from = -1, to = 1)
 #' }
 #' 
@@ -122,7 +116,7 @@ density_fun <- function(x, dist, ...) {
 #' conflation but it is also useful for calculating a series
 #' of x values of the conflated PDF from a sequence of x values
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' conflated <- .str_conflate("density_fun(x, 'dnorm', mean=0, sd=1)", "density_fun(x, 'dnorm', mean=3, sd=1)", from = -1, to = 1)
 #' }
 #' 

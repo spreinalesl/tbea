@@ -246,7 +246,7 @@ stratCI <- function(times, method, nparams, C, endpoint, confidence, quantile) {
     if(output >= 1) {
         return(output)
     } else {
-        print("Impossible to calculate lower bound")
+        message("Impossible to calculate lower bound\n")
     }
 }
 

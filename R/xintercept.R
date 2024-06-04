@@ -39,7 +39,7 @@
 #' ages <- ages[complete.cases(ages)] # remove NAs
 #' ages <- ages[which(ages < 10)] # remove outliers
 #' 
-#' \dontrun{
+#' \donttest{
 #' # Draper-Smith, OLS
 #' draperSmithNormalX0 <- xintercept(x = ages, method = "Draper-Smith", alpha = 0.05, robust = FALSE)
 #' # Draper-Smith, Robust fit

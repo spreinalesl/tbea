@@ -1,4 +1,5 @@
-# create some input tree and their expected outputs
+# create some input tree and their expected outputs in the tempdir()
+setwd(tempdir())
 
 # create a file with multiple trees in TNT format to convert to newick format
 writeLines(
@@ -53,6 +54,6 @@ test_that("number of name separators got completely replaced using name.sep", {
                  sum(sapply(gregexpr(pattern = "--", text = tnt2newick(file = "someTrees.tre", output = NULL, string = NULL, return = TRUE, subsetting = FALSE, name.sep = c("_", "--")), fixed=TRUE), function(i) sum(i > 0))))
 })
 
-# clean tesating files
+# clean testing files
 file.remove(dir(pattern = ".tre$"))
 file.remove(dir(pattern = ".newick$"))

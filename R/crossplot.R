@@ -49,10 +49,6 @@
 #' 
 #' @examples
 #' \dontrun{
-#' write.table(x=data.frame(par1=rnorm(1000), par2=rnorm(1000), par3=rnorm(1000),
-#'                    par4=rnorm(1000), par5=rnorm(1000)), file="log1.tsv", row.names=FALSE)
-#' write.table(x=data.frame(par1=rnorm(1000), par2=rnorm(1000), par3=rnorm(1000),
-#'                    par4=rnorm(1000, mean=5), par5=rnorm(1000)), file="log2.tsv", row.names=FALSE)
 #' crossplot(log1Path="log1.tsv", log2Path="log2.tsv", skip.char="#",
 #'           pattern="par", cols=NULL, bar.lty=1, bar.lwd=1,
 #'           identity.lty=2, identity.lwd=1,

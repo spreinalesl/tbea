@@ -45,7 +45,7 @@ This function will concatenate matrices in nexus format (mandatory) and write to
 \examples{
 \dontrun{
 # this will return the matrix to the console rather than to a file
-table2nexus(path="../prototipos/morpho.csv", datatype="standard", header=FALSE, sep=",")
+table2nexus(path="morpho.csv", datatype="standard", header=FALSE, sep=",")
 }
 }
 \author{

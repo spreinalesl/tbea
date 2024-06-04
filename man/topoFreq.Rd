@@ -34,6 +34,7 @@ cause any issues under your computing conditions (e.g. when lots of trees are be
 \examples{
 # tests
 set.seed(1)
+library(ape)
 trl <- ape::rmtree(10, 4)
 tpf <- topoFreq(ape::unroot(trl), output="trees")
 

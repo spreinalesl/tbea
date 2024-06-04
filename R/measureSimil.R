@@ -18,7 +18,7 @@
 #'
 #' @details Similarity is measured as the overlapping portion between two densities. It has a value between 0 and 1. The values of the vector rawData determine the behavior of the function and therefore attention must be paid to their consistence with the nature of arguments d1 and d2. Despite the function was designed in order to allow to quantify similarity between the posterior and the prior, this can be used to quantify any overlap between two given densities and for any other purpose.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Set seed and colors to use in plots in the order: Prior, posterior, and intersection
 #' set.seed(1985)
 #' colors <- c("red", "blue", "lightgray")

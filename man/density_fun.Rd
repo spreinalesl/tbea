@@ -27,7 +27,7 @@ See the documentation for each individual distribution to call their parameters
 adequately. Argument names and values should be used.
 }
 \examples{
-\dontrun{
+\donttest{
 c("density_fun(x, 'dnorm', mean=0, sd=1)",
   "density_fun(x, 'dnorm', mean=-1, sd=1)",
   "density_fun(x, 'dnorm', mean=1, sd=1)")

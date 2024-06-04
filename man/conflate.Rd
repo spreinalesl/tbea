@@ -34,13 +34,7 @@ conflated PDF on the sequence of x values determined by
 a number n of equidistant points between from and to.
 }
 \examples{
-\dontrun{
-conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)",
-           "density_fun(x, 'dnorm', mean=3, sd=1)"),
-         from=-4, to=4, n=101, add=TRUE, plot=TRUE)
-curve(density_fun(x, 'dnorm', mean=0, sd=1), add=TRUE, col="red")
-curve(density_fun(x, 'dnorm', mean=3, sd=1), add=TRUE, col="blue")
-
+\donttest{
 conflated_normals <- conflate(c("density_fun(x, 'dnorm', mean=0, sd=1)",
                                 "density_fun(x, 'dnorm', mean=3, sd=1)"),
                               from=-4, to=4, n=101, plot=FALSE)

@@ -20,6 +20,7 @@
 #' @examples
 #' # tests
 #' set.seed(1)
+#' library(ape)
 #' trl <- ape::rmtree(10, 4)
 #' tpf <- topoFreq(ape::unroot(trl), output="trees")
 #'

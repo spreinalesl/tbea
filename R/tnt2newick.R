@@ -19,19 +19,9 @@
 #' @details This function has been tested for cases where only one tree is in the original tnt tree file. Please be careful with files containing multiple trees.
 #' 
 #' @examples
-#' # create a file with multiple trees tree in TNT format to convert to newick format
-#' writeLines(
-#' text = c(
-#' "tread 'some comment'", 
-#' "(Taxon_A ((Taxon_B Taxon_C)(Taxon_D Taxon_E)))*", 
-#' "(Taxon_A (Taxon_B (Taxon_C (Taxon_D Taxon_E))))*", 
-#' "(Taxon_A (Taxon_C (Taxon_B (Taxon_D Taxon_E))));", 
-#' "proc-;"
-#' ),
-#' con = "someTrees.tre"
-#' )
+#' \dontrun{
 #' tnt2newick(file = "someTrees.tre", return = TRUE)
-#' file.remove("someTrees.tre")
+#' }
 #' @export
 
 tnt2newick <- function(file, output = NULL, string = NULL, return = FALSE, subsetting = FALSE, name.sep = NULL){
