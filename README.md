@@ -5,6 +5,7 @@
 [![R-CMD-check](https://github.com/gaballench/tbea/workflows/R-CMD-check/badge.svg)](https://github.com/gaballench/tbea/actions)
 [![](https://www.r-pkg.org/badges/version/tbea)](https://cran.r-project.org/package=tbea)
 [![](https://cranlogs.r-pkg.org/badges/tbea)](https://cran.r-project.org/package=tbea)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/tbea?color=blue)](https://cran.r-project.org/package=tbea)
 <!-- badges: end -->
 
 # tbea
