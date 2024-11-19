@@ -98,8 +98,11 @@ density_fun <- function(x, dist, ...) {
     densities <- list(...)
     densities <- unlist(densities)
     numerator <- paste(densities, collapse=" * ")
-    denominator <- paste("integrate(function(x) ", numerator, ", lower = ", from, ", upper = ", to, ")[['value']]", sep="")
-    fun_string <- paste(numerator, denominator, sep=" / ")
+    denominator <- paste("integrate(function(x) ", numerator, ", lower = -Inf", ", upper = Inf", ")[['value']]", sep="")
+    denominator_evaluated <- eval(str2expression(denominator))
+    cat(denominator, "\n", sep="")
+    cat("denominator evaluated to ", denominator_evaluated, "\n", sep="")
+    fun_string <- paste(numerator, denominator_evaluated, sep=" / ")
     #return(numerator)
     return(fun_string)
 }
