@@ -126,7 +126,7 @@ density_fun <- function(x, dist, ...) {
     eval(str2expression(expr))
 }
 
-#' .area_under_curve: integrate from min to upper
+#' .area_under_curve_quantile_conflation: integrate from min to upper
 #' @param upper A float, the upper bound for calculating the definite integral from min(data$x) to upper.
 #' @param data The matrix with x-y named columns specifying the empirical curve to integrate.
 #' 
@@ -143,12 +143,12 @@ density_fun <- function(x, dist, ...) {
 #' @noRd
 #' @importFrom stats approxfun integrate
 
-.area_under_curve <- function(upper, data) {
+.area_under_curve_quantile_conflation <- function(upper, data) {
     lower <- min(data$x)
     return(integrate(approxfun(data), lower=lower, upper=upper, subdivisions=1e4))
 }
 
-#' .loss_function: Wrapper for optimising the quantile
+#' .loss_function_quantile_conflation: Wrapper for optimising the quantile
 #' @param upper A float, with the value to evaluate the integral for data.
 #' @param p A float, with the desired probability or area under the curve.
 #' @param data The matrix with x-y named columns specifying the empirical curve to integrate.
@@ -165,9 +165,9 @@ density_fun <- function(x, dist, ...) {
 #' 
 #' @noRd
 
-.loss_function = function(upper, p, data) {    
+.loss_function_quantile_conflation = function(upper, p, data) {    
     #cat((area_under_curve(upper, data)$value - p)^2," and ", upper, "\n")
-    return((.area_under_curve(upper, data)$value - p)^2)
+    return((.area_under_curve_quantile_conflation(upper, data)$value - p)^2)
 }
 
 #' quantile_conflation: Calculate the quantile for a given probabiliy under a conflated distribution
@@ -192,8 +192,12 @@ density_fun <- function(x, dist, ...) {
 
 quantile_conflation = function(p, data, output=c("quantile", "optim")) {
     #cat("min is ", min(data$x), " max is ", max(data$x), "\n")
-    optimisation = optim(par=mean(data$x), fn=function(x).loss_function(x, p, data), method="Brent", lower=min(data$x), upper=max(data$x))
-    output = match.arg(output)
+    optimisation <- optim(par=mean(data$x),
+                          fn=function(x).loss_function_quantile_conflation(x, p, data),
+                          method="Brent",
+                          lower=min(data$x),
+                          upper=max(data$x))
+    output <- match.arg(output)
     if (output == "quantile") {
         return(optimisation$par)
     }
