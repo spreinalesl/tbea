@@ -5,7 +5,7 @@
 #' @param from,to,n The appropriate values from and to which to calculate the conflation, and a number of points n. These are the same used by the function curve but are still necessary even if no plot is required.
 #' @param add Whether to add the curve to an existing plot.
 #' 
-#' @return A tree of class phylo with summary branch lengths in tree$edge.length.
+#' @return A data frame with coordinates x-y for the conflated curve.
 #'
 #' @details Produces either a plot or a data frame
 #' with the x and y values for the conflated PDF. It uses as input
@@ -124,4 +124,84 @@ density_fun <- function(x, dist, ...) {
 
 .wrapper_conflation <- function(x, expr) {
     eval(str2expression(expr))
+}
+
+#' .area_under_curve_quantile_conflation: integrate from min to upper
+#' @param upper A float, the upper bound for calculating the definite integral from min(data$x) to upper.
+#' @param data The matrix with x-y named columns specifying the empirical curve to integrate.
+#' 
+#' @return The output of integrate.
+#'
+#' @details
+#' This function should not be called by te user. It is for optimisation purposes.
+#' @examples
+#' \donttest{
+#' data = density(rnorm(100, 0, 1))[c("x", "y")]
+#' .area_under_curve(0.5, data)
+#' }
+#' 
+#' @noRd
+#' @importFrom stats approxfun integrate
+
+.area_under_curve_quantile_conflation <- function(upper, data) {
+    lower <- min(data$x)
+    return(integrate(approxfun(data), lower=lower, upper=upper, subdivisions=1e4))
+}
+
+#' .loss_function_quantile_conflation: Wrapper for optimising the quantile
+#' @param upper A float, with the value to evaluate the integral for data.
+#' @param p A float, with the desired probability or area under the curve.
+#' @param data The matrix with x-y named columns specifying the empirical curve to integrate.
+#' 
+#' @return The squared difference between the integral from min to upper and p.
+#'
+#' @details
+#' This is a wrapper for optimisation purposes using quadratic loss.
+#' @examples
+#' \donttest{
+#' data = density(rnorm(100, 0, 1))[c("x", "y")]
+#' .loss_function(-0.1, 0.5, data)
+#' }
+#' 
+#' @noRd
+
+.loss_function_quantile_conflation = function(upper, p, data) {    
+    #cat((area_under_curve(upper, data)$value - p)^2," and ", upper, "\n")
+    return((.area_under_curve_quantile_conflation(upper, data)$value - p)^2)
+}
+
+#' quantile_conflation: Calculate the quantile for a given probabiliy under a conflated distribution
+#' @param p A float with the desired probability for which the quantile is to be calculated.
+#' @param data A data frame which results from calling `conflate`.
+#' @param output One of two values, either "quantile" or "optim". The former returns only the optimised quantile value, whereas
+#' the latter returns the complete output from `optim`. Useful for checking whether optimisation converged.
+#' 
+#' @return Either a vector of length one withe the quantile value, or a list as returned by optim.
+#'
+#' @examples
+#' \donttest{
+#' conflated = density(rnorm(1000000, 0, 1))[c("x", "y")]
+#' quantile_conflation(0.5, conflated, output = "quantile")
+#' quantile_conflation(0.5, conflated, output = "opt")
+#' quantile_conflation(0.025, conflated, "quan")
+#' quantile_conflation(0.975, conflated, "q")
+#' }
+#' 
+#' @export
+#' @importFrom stats optim
+
+quantile_conflation = function(p, data, output=c("quantile", "optim")) {
+    #cat("min is ", min(data$x), " max is ", max(data$x), "\n")
+    optimisation <- optim(par=mean(data$x),
+                          fn=function(x).loss_function_quantile_conflation(x, p, data),
+                          method="Brent",
+                          lower=min(data$x),
+                          upper=max(data$x))
+    output <- match.arg(output)
+    if (output == "quantile") {
+        return(optimisation$par)
+    }
+    if (output == "optim") {
+        return(optimisation)
+    }
 }

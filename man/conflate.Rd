@@ -17,7 +17,7 @@ conflate(pdfs, plot = TRUE, from, to, n, add = FALSE)
 \item{add}{Whether to add the curve to an existing plot.}
 }
 \value{
-A tree of class phylo with summary branch lengths in tree$edge.length.
+A data frame with coordinates x-y for the conflated curve.
 }
 \description{
 conflate: Calculate the conflation of multiple distributions
