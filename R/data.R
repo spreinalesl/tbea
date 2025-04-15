@@ -44,7 +44,7 @@
 #' analysis of the family Cynodontidae using Beast2. From an original sample of 20000, these
 #' include the last 1000 samples and only preserve the columns with node ages.
 #'
-#' @usage data(cynodontidae)
+#' @usage data(cynodontidae.prior)
 #' 
 #' @format A data frame named cynodontidae.prior with six columns:
 #' \describe{
@@ -65,7 +65,7 @@
 #' analysis of the family Cynodontidae using Beast2. From an original sample of 20000, these
 #' include the last 1000 samples and only preserve the columns with node ages.
 #'
-#' @usage data(cynodontidae)
+#' @usage data(cynodontidae.posterior)
 #' 
 #' @format A data frame named cynodontidae.posterior with six columns:
 #' \describe{
