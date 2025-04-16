@@ -1,0 +1,52 @@
+---
+title: Prior-Posterior comparisons
+author: Gustavo A. Ballen and Sandra Reinales
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Prior-Posterior comparisons}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+After carrying out a divergence time analysis, for example with `Beast2`, we might be interested in comparing the prior and the posterior of node ages. We can use the function `crossplot` to generate a plot where the x-axis represents one analysis and the y-axis another, for instance, prior versus posterior:
+
+```{r}
+library(tbea)
+data(cynodontidae.prior)
+data(cynodontidae.posterior)
+# crossplot operates over files, create temp ones for illustration
+write.table(cynodontidae.prior, "prior.tsv", row.names=F, col.names=T, sep="\t")
+write.table(cynodontidae.posterior, "posterior.tsv", row.names=F, col.names=T, sep="\t")
+
+crossplot(log1Path="prior.tsv",
+             log2Path="posterior.tsv",
+             skip.char="#",
+             pattern="mrca.date",
+             bar.lty=1,
+             bar.lwd=2,
+             identity.lty=2,
+             identity.lwd=2,
+             main="Prior-posterior comparison\nCynodontidae",
+             xlab="Prior node age (Ma)",
+             ylab="Posterior node age (Ma)",
+             pch=20, cex=2, col="blue")
+# file cleanup
+file.remove("prior.tsv")
+file.remove("posterior.tsv")
+```
+
+This kind of plot has been used in the literature when comparing prior and posterior MCMC samples, as well as when comparing the same kind of estimates coming from different independent runs or types of analysis. The function `measureSimil` integrates the area under the curve defined as the intersection between both distributions. It is a descriptive measure of how similar two distributions are. The function can both plot the resulting distributions and their intersection as well as print out its value, or skip the plot and just return the value:
+
+```{r}
+data(cynodontidae.prior)
+data(cynodontidae.posterior)
+
+measureSimil(d1=cynodontidae.prior$mrca.date.backward.Hydrolycus.,
+                d2=cynodontidae.posterior$mrca.date.backward.Hydrolycus.,
+                ylim=c(0, 5),
+                xlab="Age (Ma)",
+                ylab="Density",
+                main="Similarity between prior and posterior\n
+                      of the node Hydrolycus")
+```

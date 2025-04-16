@@ -1,0 +1,87 @@
+---
+title: Starting trees and how to specify them
+author: Gustavo A. Ballen and Sandra Reinales
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Starting trees and how to specify them}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Initial trees are used in three different ways in a divergence-time estimation analysis: random trees when (i) the topology and divergence times are co-estimated (e.g., `Beast2`), and user-defined trees when (ii) complex analyses are carried out comprising several terminals and multiple calibration points and therefore a good initial tree helps reach convergence, and when (iii) we want to fix the topology and just estimate divergence times.
+
+However, node times must be compatible with the calibration densities, otherwise, the likelihood of the initial tree is zero, and thus, their posterior probability. This generates an issue in programs such as `Beast2` which will try a finite (say 100) number of tree proposals; if all these fail, the analysis will not start.
+
+Initial trees are challenging to prepare by hand because they need to be consistent with all node calibrations, so that the initial product of likelihood and priors is different from zero. Node times need to be within the domain of the calibration distribution, so that branch length need to be specified accordingly. We can produce initial trees by hand, or infer them using a fast method such as maximum likelihood or maximum parsimony. If the latter is used for inferring an initial tree, `TNT` is a popular alternative in use. However, its format is specific to the program and differs from standard newick, so it is impossible to use it as initial tree in other types of analyses. `tbea` has a function for converting from TNT tree format to standard newick, thus allowing to use parsimony trees as initial proposals in Bayesian programs.
+
+```{r}
+# create a file with multiple trees in TNT format
+writeLines(
+        text = c(
+        "tread 'three arbitrary trees in TNT format'", 
+        "(Taxon_A ((Taxon_B Taxon_C)(Taxon_D Taxon_E)))*", 
+        "(Taxon_A (Taxon_B (Taxon_C (Taxon_D Taxon_E))))*", 
+        "(Taxon_A (Taxon_C (Taxon_B (Taxon_D Taxon_E))));", 
+        "proc-;"
+        ),
+        con = "someTrees.tre"
+    )
+
+tbea::tnt2newick(file = "someTrees.tre", return = TRUE)
+# cleanup after the example
+file.remove("someTrees.tre")
+```
+
+In order to generate a tree in which node times are consistent with the calibration priors we can use a fast method such as penalized likelihood (implemented in the `ape` package) using the initial tree and our set of node calibrations:
+
+```{r}
+library(ape)
+library(tbea)
+tree <- ape::read.tree(text="(Acestrorhynchus_falcirostris:0.1296555,
+     ((((Cynodon_gibbus:0.002334399,Cynodon_septenarius:0.00314063)
+     :0.07580842,((Hydrolycus_scomberoides:0.007028806,Hydrolycus_MUN_16211
+     :0.009577958):0.0225477,(Hydrolycus_armatus:0.002431794,
+     Hydrolycus_tatauaia:0.002788708):0.02830852):0.05110053)
+     :0.02656745,Hydrolycus_wallacei:0.01814363):0.1712442,
+     Rhaphiodon_vulpinus:0.04557667):0.1936416);")
+## get the node IDs according to the mrca of pairs of appropriate species
+# root
+mrca(tree)["Acestrorhynchus_falcirostris", "Hydrolycus_armatus"]
+# Hydrolycus sensu stricto (cf. Hydrolycus)
+mrca(tree)["Hydrolycus_scomberoides", "Hydrolycus_armatus"]
+# specify the calibrations as a data frame
+calibs <- data.frame(node=c(10, 15),
+                     age.min=c(43, 40.94),
+                     age.max=c(60, 41.6),
+                     stringsAsFactors=FALSE)
+# calibrate the tree with the information in calibs
+set.seed(15)
+calibrated <- ape::chronos(phy=tree, calibration=calibs)
+
+# plot the calibrated tree
+plot(calibrated, label.offset=1.2)
+axisPhylo()
+
+# fetch the plotted tree from the graphic environment
+plttree <- get("last_plot.phylo", envir=.PlotPhyloEnv)
+
+# process the node heights and reorder as needed
+nodes <- cbind(plttree$xx, plttree$yy)
+nodes <- nodes[c(10, 15),]
+nodes <- cbind(nodes, calibs[, c("age.min", "age.max")])
+colnames(nodes) <- c("x", "y", "min", "max")
+nodes <- cbind(nodes, rev.min=-(nodes[, c("min")] - max(plttree$xx)))
+nodes <- cbind(nodes, rev.max=-(nodes[, c("max")] - max(plttree$xx)))
+
+# plot the original calibrations as error bars
+arrows(x0=nodes[, "rev.max"], x1=nodes[, "rev.min"],
+          y0=nodes[,"y"], y1=nodes[,"y"], angle=90, length=0.3,
+          lwd=3, code=3, col="darkblue")
+
+nodelabels()
+tiplabels()
+
+# write the tree
+write.tree(phy = calibrated)
+```
