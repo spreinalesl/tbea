@@ -28,6 +28,7 @@ BugReports: https://github.com/gaballench/tbea/issues
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    Kendall
 VignetteBuilder: knitr
 Config/testthat/edition: 3

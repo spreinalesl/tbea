@@ -28,7 +28,7 @@ andes <- andes[complete.cases(andes)]
 # remove outliers
 andes <- sort(andes[which(andes < 10)])
 gapsizes <- sapply(2:length(andes), FUN=function(x) andes[x] - andes[x-1])
-Kendall::MannKendall(gapsizes)
+MannKendall(gapsizes)
 ```
 
 We fail to reject the null hypothesis of no monotonic trend in the gap sizes. Therefore we may apply the "Marshall94" method for bracketing the confidence interval.
