@@ -67,3 +67,4 @@ flycheck_*.el
 inst/doc
 /doc/
 /Meta/
+docs

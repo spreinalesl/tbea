@@ -12,6 +12,7 @@ Functions are provided for prior specification in divergence time estimation usi
 Useful links:
 \itemize{
   \item \url{https://github.com/gaballench/tbea}
+  \item \url{https://gaballench.github.io/tbea/}
   \item Report bugs at \url{https://github.com/gaballench/tbea/issues}
 }
 

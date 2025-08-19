@@ -4,3 +4,6 @@
 ^README.html
 ^tbea.pdf
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

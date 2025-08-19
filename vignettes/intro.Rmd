@@ -4,7 +4,7 @@ author: "Gustavo A. Ballen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intro to tbea}
+  %\VignetteIndexEntry{Introduction to tbea}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
