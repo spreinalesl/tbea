@@ -19,6 +19,7 @@ Description: Functions are provided for prior specification in divergence time
     Marshall, C. R. 2010. "Using confidence intervals to quantify the uncertainty in the end-points of stratigraphic ranges". Quantitative Methods in Paleobiology, 291--316. <DOI:10.1017/S1089332600001911>.
 Depends: R (>= 3.5.0)
 Imports: ape, Rfit, boot, graphics, stats, utils, coda
+Additional_repositories: https://github.com/dosreislab/mcmc3r/
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
