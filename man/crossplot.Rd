@@ -2,13 +2,14 @@
 % Please edit documentation in R/crossplot.R
 \name{crossplot}
 \alias{crossplot}
-\title{crossplot: Plot the median and HPD interval bars for pairs of distribution}
+\title{crossplot: Plot the mean/median and HPD interval bars for pairs of distributions}
 \usage{
 crossplot(
-  log1Path,
-  log2Path,
+  log1,
+  log2,
   skip.char = "#",
   pattern = NULL,
+  stat = "median",
   idx.cols = NULL,
   bar.lty,
   bar.lwd,
@@ -19,9 +20,13 @@ crossplot(
 )
 }
 \arguments{
-\item{log1Path}{character vector of length 1. Path to the first log file.}
+\item{log1}{either a character vector of length 1 with the path to the first
+log file (e.g. prior node ages), or a dataframe with independent samples as rows
+and values to compare as columns (e.g. node IDs).}
 
-\item{log2Path}{character vector of length 1. Path to the second log file.}
+\item{log2}{either a character vector of length 1 with the path to the second
+log file (e.g. posterior node ages), or a dataframe with independent samples as rows
+and values to compare as columns (e.g. node IDs).}
 
 \item{skip.char}{character vector of length 1, with '#' as default value.
 Which symbol is used as a comment. This will allow to ignore lines which
@@ -29,6 +34,8 @@ start with the symbol when reading data.}
 
 \item{pattern}{character vector of length 1. the pattern for subsetting the
 columns containing the data to be plotted.}
+
+\item{stat}{use mean or median of the distribution to plot. Median is used by default.}
 
 \item{idx.cols}{either an integer vector with the position of the columns to
 pick, or a character vector with the column names to pick. Defaults to NULL.}
@@ -54,7 +61,7 @@ of interest is used by default.}
 This function returns nothing, it plots to the graphical device.
 }
 \description{
-crossplot: Plot the median and HPD interval bars for pairs of distribution
+crossplot: Plot the mean/median and HPD interval bars for pairs of distributions
 }
 \details{
 The function produces a crossplot, which is a scatterplot where we
@@ -70,13 +77,32 @@ This function can also be used to compare two independent runs for
 then they should fall on the identity y=x line.
 }
 \examples{
+## Create log dataframes
+log1 <- data.frame(sample=seq(from=1, to=10000, by = 100),
+                   node1=rnorm(n =100, mean=41, sd=0.5),
+                   node2=rnorm(n =100, mean=50, sd=1),
+                   node3=rnorm(n =100, mean=25, sd=1))
+
+log2 <- data.frame(sample=seq(from=1, to=10000, by = 100),
+                   node1=rnorm(n =100, mean=41, sd=0.2),
+                   node2=rnorm(n =100, mean=50, sd=0.8),
+                   node3=rnorm(n =100, mean=25, sd=0.5))
+                   
+## Run crossplot
+crossplot(log1, log2, pattern="node", cols=NULL, stat="mean",
+          bar.lty=1, bar.lwd=1, identity.lty=2, identity.lwd=1,
+          extra.space=0.5, main="My plot", xlab="log 1 (prior)",
+          ylab="log 2 (posterior)", pch=19)
+
 \dontrun{
-crossplot(log1Path="log1.tsv", log2Path="log2.tsv", skip.char="#",
+## Run crossplot over log files
+crossplot(log1="log1.tsv", log2="log2.tsv", stat="median", skip.char="#",
           pattern="par", cols=NULL, bar.lty=1, bar.lwd=1,
           identity.lty=2, identity.lwd=1,
-          extra.space=0.5, main="My plot", xlab="log 1 (prior)", ylab="log 2 (posterior)", pch=19)
+          extra.space=0.5, main="My plot", xlab="log 1 (prior)",
+          ylab="log 2 (posterior)", pch=19)
 }
 }
 \author{
-Gustavo A. Ballen
+Gustavo A. Ballen and Sandra Reinales
 }
