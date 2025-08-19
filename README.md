@@ -12,8 +12,8 @@
 
 ## Overview
 
-An R package for pre- and post-processing in phylogenetic and
-divergence-times Bayesian inference. Functions are provided for prior
+An R package for pre- and post-processing in phylogenetic and Bayesian
+inference of divergence times. Functions are provided for prior
 specification in divergence time estimation using fossils as well as
 other kinds of data. It provides tools for interacting with the input
 and output of Bayesian platforms in evolutionary biology such as
