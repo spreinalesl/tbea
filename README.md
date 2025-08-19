@@ -53,8 +53,9 @@ This package was created and maintained by Gustavo A. Ballen
 
 Please cite this package as follows:
 
-Ballen, G.A. & Reinales, S. (2024). tbea: tools for pre- and
-post-processing in Bayesian evolutionary analyses. BioRxiv
+Ballen, G.A. & Reinales, S. (2025). tbea: tools for pre- and
+post-processing in Bayesian evolutionary analyses. Evolutionary Journal
+of the Linnean Society
 <https://www.biorxiv.org/content/10.1101/2024.06.18.599561>.
 
 If you use bibtex, use the following entry in your .bib file:
@@ -62,10 +63,10 @@ If you use bibtex, use the following entry in your .bib file:
     @article {Ballen2024.06.18.599561,
         author = {Ballen, Gustavo A. and Reinales, Sandra},
         title = {tbea: tools for pre- and post-processing in Bayesian evolutionary analyses},
-        year = {2024},
+        year = {2025},
         doi = {10.1101/2024.06.18.599561},
         eprint = {https://www.biorxiv.org/content/early/2024/06/19/2024.06.18.599561.full.pdf},
-        journal = {bioRxiv}
+        journal = {Evolutionary Journal of the Linnean Society}
     }
 
 ## Problems?
